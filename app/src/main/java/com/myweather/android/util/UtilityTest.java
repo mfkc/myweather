@@ -51,8 +51,8 @@ public class UtilityTest extends Fragment{
     }
 
     public static boolean handleCityResponse(String response,int provinceId){
-        if (!TextUtils.isEmpty(response)){
-            try {
+        if (!TextUtils.isEmpty(response)) {
+            try{
                 JSONArray allCity = new JSONArray(response);
                 for(int i = 0;i < allCity.length();i ++){
                     JSONObject cityObj = allCity.getJSONObject(i);
@@ -60,10 +60,8 @@ public class UtilityTest extends Fragment{
                     city.setCityName(cityObj.getString("name"));
                     city.setCityCode(cityObj.getInt("id"));
                     city.setProvinceId(provinceId);
-                    city.save();
                 }
-                return true;
-            } catch (JSONException e) {
+            }catch(Exception e){
                 e.printStackTrace();
             }
         }
